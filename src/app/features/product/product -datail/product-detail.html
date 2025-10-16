@@ -1,0 +1,19 @@
+<div class="p-6">
+  @if (loading) {
+    <div class="text-center text-gray-500 py-10">Loading...</div>
+  } @else if (product) {
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <img [src]="product.productImageUrl || 'https://via.placeholder.com/300'"
+           alt="{{ product.productName }}" class="w-full h-80 object-contain bg-white rounded-2xl shadow"/>
+      <div>
+        <h2 class="text-3xl font-semibold mb-2">{{ product.productName }}</h2>
+        <p class="text-gray-600 mb-3">{{ product.productDescription }}</p>
+        <p class="text-2xl font-bold text-blue-600 mb-5">${{ product.productPrice }}</p>
+        <button (click)="addToCart()"
+                class="bg-blue-600 text-white px-6 py-2 rounded-2xl hover:bg-blue-700">
+          Add to Cart
+        </button>
+      </div>
+    </div>
+  }
+</div>
