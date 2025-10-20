@@ -1,24 +1,145 @@
-<!-- app.component.html -->
-<div class="flex flex-col min-h-screen bg-gray-50">
-  <!-- Header -->
-  <header class="bg-white shadow">
-    <div class="container mx-auto px-6 py-4 flex justify-between items-center">
-      <a routerLink="/" class="text-2xl font-bold text-blue-600">Mini E-Com</a>
+<!-- Root Wrapper: Add dark mode context -->
+<div id="appWrapper" class="flex flex-col min-h-screen bg-gray-50 dark:bg-gray-900 dark:text-white">
 
-      <nav class="space-x-6">
-        <a routerLink="/" class="hover:text-blue-600">Home</a>
-        <a routerLink="/cart" class="hover:text-blue-600">Cart</a>
+  <!-- Header -->
+  <header class="bg-white dark:bg-gray-800 shadow">
+    <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+      <a routerLink="/" class="text-2xl font-bold text-blue-600 dark:text-blue-400">Mini E-Com</a>
+
+      <nav class="space-x-6 hidden md:flex">
+        <a routerLink="/" class="hover:text-blue-600 dark:hover:text-blue-400">Home</a>
+        <a routerLink="/products" class="hover:text-blue-600 dark:hover:text-blue-400">Shop</a>
+        <a routerLink="/cart" class="hover:text-blue-600 dark:hover:text-blue-400">Cart</a>
+        <a routerLink="/contact" class="hover:text-blue-600 dark:hover:text-blue-400">Contact</a>
       </nav>
+
+      <!-- Theme Toggle Button -->
+      <button id="themeToggle" class="ml-4 text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">
+        <svg id="themeIcon" class="w-6 h-6 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <!-- Icon changes dynamically -->
+        </svg>
+      </button>
+
+      <!-- Mobile Menu Icon -->
+      <div class="md:hidden ml-4">
+        <button id="menuToggle" class="text-gray-600 dark:text-gray-300 focus:outline-none">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div id="mobileMenu" class="md:hidden hidden px-6 pb-4">
+      <a routerLink="/" class="block py-2 hover:text-blue-600 dark:hover:text-blue-400">Home</a>
+      <a routerLink="/products" class="block py-2 hover:text-blue-600 dark:hover:text-blue-400">Shop</a>
+      <a routerLink="/cart" class="block py-2 hover:text-blue-600 dark:hover:text-blue-400">Cart</a>
+      <a routerLink="/contact" class="block py-2 hover:text-blue-600 dark:hover:text-blue-400">Contact</a>
     </div>
   </header>
 
-  <!-- Main content -->
-  <main class="flex-grow container mx-auto px-6 py-6">
+  <!-- Main Content -->
+  <main class="flex-grow container mx-auto px-6 py-12">
+
+    <!-- Hero Section -->
+    <section class="text-center mb-16">
+      <h1 class="text-4xl md:text-5xl font-bold text-gray-800 dark:text-white mb-4">
+        Discover the Best Deals in Online Shopping
+      </h1>
+      <p class="text-gray-600 dark:text-gray-300 text-lg mb-8">
+        Explore a wide range of products at unbeatable prices.
+      </p>
+      <a routerLink="/products"
+        class="bg-blue-600 text-white px-6 py-3 rounded hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600 transition duration-300">
+        Shop Now
+      </a>
+    </section>
+
+    <!-- Features -->
+    <section class="grid gap-8 md:grid-cols-3 text-center mb-16">
+      <!-- Feature -->
+      <div>
+        <div class="text-blue-600 dark:text-blue-400 mb-2">
+          <svg class="mx-auto w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M3 3h18M9 3v18M15 3v18M3 9h18"></path>
+          </svg>
+        </div>
+        <h3 class="text-xl font-semibold mb-2">Wide Selection</h3>
+        <p class="text-gray-600 dark:text-gray-300">Thousands of products from top brands in every category.</p>
+      </div>
+
+      <div>
+        <div class="text-blue-600 dark:text-blue-400 mb-2">
+          <svg class="mx-auto w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+          </svg>
+        </div>
+        <h3 class="text-xl font-semibold mb-2">Fast Delivery</h3>
+        <p class="text-gray-600 dark:text-gray-300">Lightning-fast delivery to your doorstep in 24–48 hours.</p>
+      </div>
+
+      <div>
+        <div class="text-blue-600 dark:text-blue-400 mb-2">
+          <svg class="mx-auto w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round"
+              d="M12 11c0-1.657-1.343-3-3-3s-3 1.343-3 3 3 5 3 5 3-3.343 3-5zm6 0c0-1.657-1.343-3-3-3s-3 1.343-3 3 3 5 3 5 3-3.343 3-5z" />
+          </svg>
+        </div>
+        <h3 class="text-xl font-semibold mb-2">Customer Support</h3>
+        <p class="text-gray-600 dark:text-gray-300">24/7 customer support to help you with your orders.</p>
+      </div>
+    </section>
+
+    <!-- Router outlet -->
     <router-outlet></router-outlet>
   </main>
 
   <!-- Footer -->
-  <footer class="bg-gray-100 text-center py-4 text-gray-600 text-sm">
-    © {{ currentYear }} Mini E-Com. All rights reserved.
+  <footer class="bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 text-sm py-6">
+    <div class="container mx-auto px-6 flex flex-col md:flex-row justify-between items-center">
+      <p class="mb-4 md:mb-0">© {{ currentYear }} Mini E-Com. All rights reserved.</p>
+      <div class="space-x-4">
+        <a routerLink="/privacy" class="hover:text-blue-600 dark:hover:text-blue-400">Privacy Policy</a>
+        <a routerLink="/terms" class="hover:text-blue-600 dark:hover:text-blue-400">Terms of Service</a>
+      </div>
+    </div>
   </footer>
 </div>
+<script>
+  // Mobile menu toggle
+  document.getElementById('menuToggle').addEventListener('click', () => {
+    const mobileMenu = document.getElementById('mobileMenu');
+    mobileMenu.classList.toggle('hidden');
+  });
+
+  // Theme toggle
+  const themeToggle = document.getElementById('themeToggle');
+  const html = document.documentElement;
+  const themeIcon = document.getElementById('themeIcon');
+
+  // Load saved theme
+  const savedTheme = localStorage.getItem('theme');
+  if (savedTheme === 'dark') {
+    html.classList.add('dark');
+    setIcon('dark');
+  } else {
+    setIcon('light');
+  }
+
+  // Toggle theme
+  themeToggle.addEventListener('click', () => {
+    const isDark = html.classList.toggle('dark');
+    localStorage.setItem('theme', isDark ? 'dark' : 'light');
+    setIcon(isDark ? 'dark' : 'light');
+  });
+
+  function setIcon(mode) {
+    themeIcon.innerHTML = mode === 'dark'
+      ? `<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+           d="M12 3v1m0 16v1m8.66-13.66l-.707.707M4.05 19.95l-.707.707M21 12h1M2 12H1m16.95 4.95l-.707-.707M4.05 4.05l-.707-.707M12 5a7 7 0 000 14a7 7 0 000-14z" />`
+      : `<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+           d="M17.293 17.293A8 8 0 016.707 6.707a8.001 8.001 0 1010.586 10.586z" />`;
+  }
+</script>
