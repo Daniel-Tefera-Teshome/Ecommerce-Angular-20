@@ -1,0 +1,43 @@
+<div class="max-w-md mx-auto mt-12 p-6 bg-white dark:bg-gray-800 shadow rounded">
+  <h2 class="text-2xl font-semibold mb-4 text-center text-gray-800 dark:text-white">
+    Register
+  </h2>
+
+  <form [formGroup]="form" (ngSubmit)="onSubmit()" novalidate>
+    <div class="mb-4">
+      <label class="block text-sm font-medium text-gray-700 dark:text-gray-300">Name</label>
+      <input
+        formControlName="Name"
+        class="mt-1 block w-full border border-gray-300 dark:border-gray-700 rounded px-3 py-2 dark:bg-gray-900 dark:text-white"
+        placeholder="Your full name"
+      />
+    </div>
+
+    <div class="mb-4">
+      <label class="block text-sm font-medium text-gray-700 dark:text-gray-300">Mobile No</label>
+      <input
+        formControlName="MobileNo"
+        class="mt-1 block w-full border border-gray-300 dark:border-gray-700 rounded px-3 py-2 dark:bg-gray-900 dark:text-white"
+        placeholder="10-digit mobile number"
+      />
+    </div>
+
+    <div class="mb-6">
+      <label class="block text-sm font-medium text-gray-700 dark:text-gray-300">Password</label>
+      <input
+        type="password"
+        formControlName="Password"
+        class="mt-1 block w-full border border-gray-300 dark:border-gray-700 rounded px-3 py-2 dark:bg-gray-900 dark:text-white"
+        placeholder="Create a password"
+      />
+    </div>
+
+    <button
+      type="submit"
+      [disabled]="form.invalid"
+      class="w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700 transition"
+    >
+      Register
+    </button>
+  </form>
+</div>

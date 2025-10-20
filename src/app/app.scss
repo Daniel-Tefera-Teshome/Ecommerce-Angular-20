@@ -1,0 +1,12 @@
+.hero-section {
+  background-image: url('/assets/ecom1.jpeg');  /* Make sure the image path is correct */
+  background-size: 100%; /* Adjust zoom level: Larger value = more zoomed-in */
+  background-position: center; /* Keeps the image centered */
+  height: 24rem;  /* Adjust the height of the section */
+  background-repeat: no-repeat;  /* Prevents the image from repeating */
+  transition: background-size 0.5s ease-in-out; /* Adds smooth transition effect */
+}
+
+.hero-section:hover {
+  background-size: 130%; /* Zoom in further when hovering */
+}

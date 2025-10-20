@@ -4,19 +4,30 @@
   <!-- Header -->
   <header class="bg-white dark:bg-gray-800 shadow">
     <div class="container mx-auto px-6 py-4 flex justify-between items-center">
-      <a routerLink="/" class="text-2xl font-bold text-blue-600 dark:text-blue-400">Mini E-Com</a>
+    <div class="flex items-center ml-6 mt-4 mb-2">
+      <img src="/d-ecom.png" alt="Logo" class="h-20 w-20"/>
+      <a routerLink="/" class="text-2xl font-bold text-blue-600 dark:text-blue-400 ml-3">Mini E-Com</a>
+    </div>
 
       <nav class="space-x-6 hidden md:flex">
         <a routerLink="/" class="hover:text-blue-600 dark:hover:text-blue-400">Home</a>
         <a routerLink="/products" class="hover:text-blue-600 dark:hover:text-blue-400">Shop</a>
         <a routerLink="/cart" class="hover:text-blue-600 dark:hover:text-blue-400">Cart</a>
-        <a routerLink="/contact" class="hover:text-blue-600 dark:hover:text-blue-400">Contact</a>
+
+        @if (authService.isLoggedIn$ | async) {
+          <button (click)="logout()" class="hover:text-blue-600 dark:hover:text-blue-400">Logout</button>
+          <a routerLink="/contact" class="hover:text-blue-600 dark:hover:text-blue-400">Contact</a>
+        } @else {
+          <a routerLink="/login" class="hover:text-blue-600 dark:hover:text-blue-400">Login</a>
+          <a routerLink="/register" class="hover:text-blue-600 dark:hover:text-blue-400">Register</a>
+        }
       </nav>
 
       <!-- Theme Toggle Button -->
       <button id="themeToggle" class="ml-4 text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">
         <svg id="themeIcon" class="w-6 h-6 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <!-- Icon changes dynamically -->
+
         </svg>
       </button>
 
@@ -43,22 +54,19 @@
   <!-- Main Content -->
   <main class="flex-grow container mx-auto px-6 py-12">
 
-    <!-- Hero Section -->
-    <section class="text-center mb-16">
-      <h1 class="text-4xl md:text-5xl font-bold text-gray-800 dark:text-white mb-4">
-        Discover the Best Deals in Online Shopping
-      </h1>
-      <p class="text-gray-600 dark:text-gray-300 text-lg mb-8">
-        Explore a wide range of products at unbeatable prices.
-      </p>
-      <a routerLink="/products"
-        class="bg-blue-600 text-white px-6 py-3 rounded hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600 transition duration-300">
+  <!-- Hero Section -->
+  <section class="w-full relative text-center text-white bg-cover bg-center h-96" style="background-image: url('/ecom2.jpeg');">
+    <div class="absolute inset-0 bg-black opacity-50"></div>
+    <div class="relative z-10">
+      <h1 class="text-4xl md:text-5xl font-bold mb-4">Discover the Best Deals in Online Shopping</h1>
+      <p class="text-lg mb-8">Explore a wide range of products at unbeatable prices.</p>
+      <a routerLink="/products" class="bg-blue-600 text-white px-6 py-3 rounded hover:bg-blue-700 transition duration-300">
         Shop Now
       </a>
-    </section>
+    </div>
 
     <!-- Features -->
-    <section class="grid gap-8 md:grid-cols-3 text-center mb-16">
+    <section class="grid gap-8 md:grid-cols-3 text-center mb-16 mt-12">
       <!-- Feature -->
       <div>
         <div class="text-blue-600 dark:text-blue-400 mb-2">
@@ -91,6 +99,8 @@
         <p class="text-gray-600 dark:text-gray-300">24/7 customer support to help you with your orders.</p>
       </div>
     </section>
+  </section>
+
 
     <!-- Router outlet -->
     <router-outlet></router-outlet>

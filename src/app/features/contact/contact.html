@@ -1,0 +1,63 @@
+<div class="max-w-3xl mx-auto py-12 px-6">
+  <h2 class="text-3xl font-bold text-gray-800 dark:text-white mb-6">Contact Us</h2>
+  <form [formGroup]="contactForm" (ngSubmit)="onSubmit()" novalidate class="space-y-6 bg-white dark:bg-gray-800 p-6 rounded shadow">
+
+    <!-- Name Field -->
+    <div>
+      <label for="name" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Name</label>
+      <input
+        id="name"
+        type="text"
+        formControlName="name"
+        class="mt-1 block w-full px-4 py-2 rounded border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-800 dark:text-white focus:ring-blue-500 focus:border-blue-500"
+        [class.border-red-500]="name?.invalid && (name?.touched || submitted)"
+      />
+      <div *ngIf="name?.invalid && (name?.touched || submitted)" class="text-red-500 text-sm mt-1">
+        <div *ngIf="name?.errors?.['required']">Name is required.</div>
+        <div *ngIf="name?.errors?.['minlength']">Name must be at least 2 characters.</div>
+      </div>
+    </div>
+
+    <!-- Email Field -->
+    <div>
+      <label for="email" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Email</label>
+      <input
+        id="email"
+        type="email"
+        formControlName="email"
+        class="mt-1 block w-full px-4 py-2 rounded border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-800 dark:text-white focus:ring-blue-500 focus:border-blue-500"
+        [class.border-red-500]="email?.invalid && (email?.touched || submitted)"
+      />
+      <div *ngIf="email?.invalid && (email?.touched || submitted)" class="text-red-500 text-sm mt-1">
+        <div *ngIf="email?.errors?.['required']">Email is required.</div>
+        <div *ngIf="email?.errors?.['email']">Please enter a valid email address.</div>
+      </div>
+    </div>
+
+    <!-- Message Field -->
+    <div>
+      <label for="message" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Message</label>
+      <textarea
+        id="message"
+        rows="5"
+        formControlName="message"
+        class="mt-1 block w-full px-4 py-2 rounded border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-800 dark:text-white focus:ring-blue-500 focus:border-blue-500"
+        [class.border-red-500]="message?.invalid && (message?.touched || submitted)"
+      ></textarea>
+      <div *ngIf="message?.invalid && (message?.touched || submitted)" class="text-red-500 text-sm mt-1">
+        <div *ngIf="message?.errors?.['required']">Message is required.</div>
+        <div *ngIf="message?.errors?.['minlength']">Message must be at least 10 characters.</div>
+      </div>
+    </div>
+
+    <!-- Submit Button -->
+    <div>
+      <button
+        type="submit"
+        class="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded transition"
+      >
+        Send Message
+      </button>
+    </div>
+  </form>
+</div>
