@@ -12,10 +12,16 @@
         class="mt-1 block w-full px-4 py-2 rounded border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-800 dark:text-white focus:ring-blue-500 focus:border-blue-500"
         [class.border-red-500]="name?.invalid && (name?.touched || submitted)"
       />
-      <div *ngIf="name?.invalid && (name?.touched || submitted)" class="text-red-500 text-sm mt-1">
-        <div *ngIf="name?.errors?.['required']">Name is required.</div>
-        <div *ngIf="name?.errors?.['minlength']">Name must be at least 2 characters.</div>
-      </div>
+      @if(name?.invalid && (name?.touched || submitted)){
+        <div class="text-red-500 text-sm mt-1">
+        @if(name?.errors?.['required']){
+          <div>Name is required.</div>
+        }
+        @if(name?.errors?.['minlength']){
+          <div>Name must be at least 2 characters.</div>
+        }
+        </div>
+      }
     </div>
 
     <!-- Email Field -->
@@ -28,10 +34,16 @@
         class="mt-1 block w-full px-4 py-2 rounded border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-800 dark:text-white focus:ring-blue-500 focus:border-blue-500"
         [class.border-red-500]="email?.invalid && (email?.touched || submitted)"
       />
-      <div *ngIf="email?.invalid && (email?.touched || submitted)" class="text-red-500 text-sm mt-1">
-        <div *ngIf="email?.errors?.['required']">Email is required.</div>
-        <div *ngIf="email?.errors?.['email']">Please enter a valid email address.</div>
-      </div>
+      @if(email?.invalid && (email?.touched || submitted)){
+        <div class="text-red-500 text-sm mt-1">
+        @if(email?.errors?.['required']){
+          <div>Email is required.</div>
+        }
+        @if(email?.errors?.['minlength']){
+          <div>Please enter a valid email address.</div>
+        }
+        </div>
+      }
     </div>
 
     <!-- Message Field -->
@@ -44,10 +56,16 @@
         class="mt-1 block w-full px-4 py-2 rounded border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-800 dark:text-white focus:ring-blue-500 focus:border-blue-500"
         [class.border-red-500]="message?.invalid && (message?.touched || submitted)"
       ></textarea>
-      <div *ngIf="message?.invalid && (message?.touched || submitted)" class="text-red-500 text-sm mt-1">
-        <div *ngIf="message?.errors?.['required']">Message is required.</div>
-        <div *ngIf="message?.errors?.['minlength']">Message must be at least 10 characters.</div>
-      </div>
+      @if(message?.invalid && (message?.touched || submitted)){
+        <div class="text-red-500 text-sm mt-1">
+        @if(message?.errors?.['required']){
+          <div>Message is required.</div>
+        }
+        @if(message?.errors?.['minlength']){
+          <div>Message must be at least 10 characters.</div>
+        }
+        </div>
+      }
     </div>
 
     <!-- Submit Button -->
