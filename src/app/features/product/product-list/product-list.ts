@@ -33,7 +33,13 @@ export class ProductListComponent implements OnInit {
   }
 
   addToCart(product: Product) {
-    // Use customerId = 0 for guest
-    this.api.addToCart(0, product.productId, 1).subscribe(() => alert('Added to cart!'));
+    const CustId = Number(localStorage.getItem('CustId'));
+    const date = String(new Date());
+    if (!product) {
+      return;
+    }
+    this.api
+      .addToCart(0, CustId, product.productId, 1, date)
+      .subscribe(() => alert('Added to cart!'));
   }
 }

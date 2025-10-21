@@ -28,7 +28,13 @@ export class ProductDetailComponent implements OnInit {
   }
 
   addToCart() {
-    if (!this.product) return;
-    this.api.addToCart(0, this.product.productId, 1).subscribe(() => alert('Added to cart!'));
+    const CustId = Number(localStorage.getItem('CustId'));
+    const date = String(new Date());
+    if (!this.product) {
+      return;
+    }
+    this.api
+      .addToCart(0, CustId, this.product.productId, 1, date)
+      .subscribe(() => alert('Added to cart!'));
   }
 }

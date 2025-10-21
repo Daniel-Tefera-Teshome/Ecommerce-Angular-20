@@ -1,4 +1,3 @@
-// src/app/services/auth.service.ts
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
@@ -42,9 +41,9 @@ export class AuthService {
         tap((response) => {
           if (response.result) {
             // Save user data
-            localStorage.setItem('customerId', response.data.custId.toString());
-            localStorage.setItem('customerName', response.data.name);
-            localStorage.setItem('mobileNo', response.data.mobileNo);
+            localStorage.setItem('CustId', response.data.custId.toString());
+            localStorage.setItem('UserName', response.data.name);
+            localStorage.setItem('UserPassword', response.data.mobileNo);
             this._isLoggedIn.next(true);
           } else {
             throw new Error('Login failed');
@@ -54,16 +53,16 @@ export class AuthService {
       );
   }
   private hasStoredLogin(): boolean {
-    return !!localStorage.getItem('customerId');
+    return !!localStorage.getItem('CustId');
   }
 
   get customerId(): string | null {
-    return localStorage.getItem('customerId');
+    return localStorage.getItem('CustId');
   }
 
   logout() {
     localStorage.removeItem('auth_token');
-    localStorage.removeItem('customerId');
+    localStorage.removeItem('CustId');
     this._isLoggedIn.next(false);
     this.router.navigate(['/login']);
   }
@@ -73,7 +72,7 @@ export class AuthService {
   }
 
   getCustomerId(): number | null {
-    const id = localStorage.getItem('customerId');
+    const id = localStorage.getItem('CustId');
     return id ? +id : null;
   }
 }

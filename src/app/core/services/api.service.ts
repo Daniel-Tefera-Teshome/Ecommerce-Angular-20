@@ -50,11 +50,19 @@ export class ApiService {
     );
   }
 
-  addToCart(customerId: number, productId: number, quantity: number): Observable<any> {
+  addToCart(
+    CartId: number,
+    CustId: number,
+    ProductId: number,
+    Quantity: number,
+    AddedDate: string
+  ): Observable<any> {
     return this.http.post(`${this.base}/AddToCart`, {
-      customerId,
-      productId,
-      quantity,
+      CartId,
+      CustId,
+      ProductId,
+      Quantity,
+      AddedDate,
     });
   }
 
