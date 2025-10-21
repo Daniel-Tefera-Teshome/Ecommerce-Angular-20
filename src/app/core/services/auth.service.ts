@@ -15,7 +15,7 @@ interface LoginResponse {
   providedIn: 'root',
 })
 export class AuthService {
-  private apiPrefix = '/api/amazon';
+  private apiPrefix = '/api/Ecommerce';
   private _isLoggedIn = new BehaviorSubject<boolean>(false);
   isLoggedIn$ = this._isLoggedIn.asObservable();
 

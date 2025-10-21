@@ -8,11 +8,10 @@ import { Customer } from '../models/customer';
 @Injectable({ providedIn: 'root' })
 export class ApiService {
   private base = '/api/Ecommerce';
-  private defaultUserId = 1;
 
   constructor(private http: HttpClient) {}
   get userId(): number {
-    return Number(localStorage.getItem('userId')) || 1;
+    return Number(localStorage.getItem('CuustId')) || 1;
   }
 
   // Products
